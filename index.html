@@ -1,0 +1,254 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 24px; }
+  .jp-page { background: #000; color: #fff; font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; font-size: 1.2rem; line-height: 1.6; }
+  .gold { color: #C9A84C; }
+  .jp-hero { position: relative; background: linear-gradient(180deg, #0a0600 0%, #000 60%); padding: 3rem 1.5rem 0; text-align: center; overflow: hidden; }
+  .jp-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(180,130,20,0.18) 0%, transparent 70%); pointer-events: none; }
+  .jp-badge { display: inline-block; border: 1px solid #C9A84C; color: #C9A84C; font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; padding: 8px 22px; border-radius: 2px; margin-bottom: 1.5rem; }
+  .jp-title { font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 400; letter-spacing: 6px; text-transform: uppercase; color: #C9A84C; margin-bottom: 0.3rem; }
+  .jp-jackpot { font-family: 'Cinzel', serif; font-size: clamp(72px,18vw,130px); font-weight: 900; line-height: 0.9; background: linear-gradient(180deg, #F5E070 0%, #C9A84C 40%, #8B6914 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 2px; margin-bottom: 0.5rem; }
+  .jp-subtitle-line { font-size: 1.15rem; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .jp-mentor-name { font-family: 'Cinzel', serif; font-size: clamp(1.3rem,5vw,2rem); font-weight: 700; color: #C9A84C; letter-spacing: 3px; margin-bottom: 2rem; }
+  .jp-hero-img-wrap { position: relative; display: inline-block; max-width: 520px; width: 100%; margin: 0 auto; }
+  .jp-hero-img-wrap::before { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 90%; height: 60%; background: radial-gradient(ellipse at 50% 100%, rgba(180,130,10,0.35) 0%, transparent 70%); z-index: 1; pointer-events: none; }
+  .jp-hero-img { width: 100%; display: block; position: relative; z-index: 2; }
+  .jp-divider { height: 1px; background: linear-gradient(90deg, transparent, #C9A84C 30%, #F0D080 50%, #C9A84C 70%, transparent); margin: 0 1.5rem; }
+  .jp-section { padding: 2.5rem 1.25rem; max-width: 680px; margin: 0 auto; }
+  .jp-section-title { font-family: 'Cinzel', serif; font-size: clamp(2rem,7vw,3rem); font-weight: 700; color: #C9A84C; text-align: center; margin-bottom: 0.5rem; letter-spacing: 1px; }
+  .jp-section-sub { text-align: center; color: #888; font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6; }
+  .jp-includes { display: flex; flex-direction: column; gap: 1rem; }
+  .jp-item { display: flex; align-items: flex-start; gap: 1rem; background: linear-gradient(135deg, #0d0b00 0%, #1a1400 100%); border: 1px solid rgba(180,130,20,0.25); border-left: 4px solid #C9A84C; border-radius: 6px; padding: 1.1rem 1.25rem; }
+  .jp-item-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+  .jp-item-text strong { display: block; color: #F0D080; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+  .jp-item-text span { color: #bbb; font-size: 0.95rem; line-height: 1.7; }
+  .jp-affiliate { background: linear-gradient(135deg, #0d0800 0%, #1c1100 100%); border: 1px solid rgba(180,130,20,0.4); border-radius: 8px; padding: 2rem; text-align: center; }
+  .jp-affiliate::before { content: '💰'; font-size: 3rem; display: block; margin-bottom: 1rem; }
+  .jp-affiliate h3 { font-family: 'Cinzel', serif; font-size: 1.3rem; color: #C9A84C; margin-bottom: 0.75rem; }
+  .jp-affiliate p { color: #bbb; font-size: 1.2rem; line-height: 1.7; margin-bottom: 1rem; }
+  .jp-affiliate-value { font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 900; background: linear-gradient(180deg, #F5E070 0%, #C9A84C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .jp-affiliate-label { color: #888; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; display: block; }
+  .jp-price-section { background: linear-gradient(180deg, #000 0%, #0a0600 50%, #000 100%); padding: 3rem 1.5rem; text-align: center; border-top: 1px solid rgba(180,130,20,0.2); border-bottom: 1px solid rgba(180,130,20,0.2); }
+  .jp-price-label { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: #666; margin-bottom: 0.5rem; }
+  .jp-price-value { font-family: 'Cinzel', serif; font-size: clamp(70px,18vw,120px); font-weight: 900; background: linear-gradient(180deg, #F5E070 0%, #C9A84C 40%, #8B6914 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+  .jp-price-currency { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #C9A84C; margin-bottom: 0.3rem; display: block; }
+  .jp-price-note { color: #888; font-size: 1.15rem; margin-top: 0.5rem; margin-bottom: 2rem; }
+  .jp-cta-btn { display: inline-block; background: linear-gradient(135deg, #C9A84C 0%, #F0D080 40%, #C9A84C 70%, #8B6914 100%); color: #000; font-family: 'Cinzel', serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; padding: 1.2rem 2rem; border-radius: 6px; border: none; cursor: pointer; width: 100%; max-width: 420px; transition: opacity 0.2s; }
+  .jp-cta-btn:hover { opacity: 0.88; }
+  .jp-cta-sub { margin-top: 1rem; color: #666; font-size: 0.85rem; }
+  .jp-guarantee { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; color: #888; font-size: 1.15rem; }
+  .jp-ornament { text-align: center; color: #C9A84C; font-size: 1.1rem; margin: 0.5rem 0; letter-spacing: 8px; opacity: 0.6; }
+  .jp-footer { background: #000; border-top: 1px solid #111; padding: 2rem 1.5rem; text-align: center; color: #444; font-size: 1.2rem; line-height: 1.8; }
+  .jp-footer .gold { font-family: 'Cinzel', serif; font-size: 1.15rem; }
+
+  /* Results grid */
+  .jp-results-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 560px) { .jp-results-grid { grid-template-columns: 1fr 1fr; } }
+  .jp-result-card { background: #0a0800; border: 1px solid rgba(180,130,20,0.3); border-radius: 10px; overflow: hidden; }
+  .jp-result-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
+  .jp-result-caption { padding: 0.9rem 1rem; border-top: 1px solid rgba(180,130,20,0.15); }
+  .jp-result-name { font-size: 1.15rem; font-weight: 600; color: #F0D080; margin-bottom: 4px; }
+  .jp-result-amount { font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; color: #C9A84C; }
+  .jp-result-desc { font-size: 0.85rem; color: #888; margin-top: 4px; }
+
+  .jp-community-banner { background: linear-gradient(135deg, #0d0b00, #1a1400); border: 1px solid rgba(180,130,20,0.3); border-radius: 8px; padding: 1.25rem; display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+  .jp-community-icon { font-size: 2rem; flex-shrink: 0; }
+  .jp-community-text strong { display: block; color: #F0D080; font-size: 1.2rem; margin-bottom: 6px; font-weight: 700; }
+  .jp-community-text span { color: #aaa; font-size: 1.15rem; line-height: 1.6; }
+</style>
+
+<div class="jp-page">
+
+  <div class="jp-hero">
+    <div class="jp-badge">Programa Exclusivo</div>
+    <div class="jp-title">Mentoria</div>
+    <div class="jp-jackpot">JACKPOT</div>
+    <div class="jp-subtitle-line">com</div>
+    <div class="jp-mentor-name">Delcio Dollar</div>
+    <div class="jp-hero-img-wrap">
+      <img class="jp-hero-img" src="https://id-preview--5f803feb-000c-4a13-88eb-b16887ae7493.lovable.app/__l5e/assets-v1/9ed5010b-c55a-45e4-bc35-904deb7baa3f/delcio-hero.png" alt="Delcio Dollar" />
+    </div>
+  </div>
+
+  <div class="jp-divider"></div>
+
+  <div class="jp-section">
+    <div class="jp-section-title">O Que Está Incluído</div>
+    <div class="jp-section-sub">Tudo o que precisas para jogar com estratégia e lucrar de forma consistente</div>
+    <div class="jp-includes">
+      <div class="jp-item">
+        <div class="jp-item-icon">🎬</div>
+        <div class="jp-item-text">
+          <strong>Estratégias Exclusivas em Vídeo Aulas</strong>
+          <span>Aprende os métodos que funcionam de verdade, com aulas práticas e diretas ao ponto.</span>
+        </div>
+      </div>
+      <div class="jp-item">
+        <div class="jp-item-icon">🧠</div>
+        <div class="jp-item-text">
+          <strong>Psicologia do Apostador</strong>
+          <span>Controlo emocional, mentalidade vencedora e gestão de banca para jogar sem impulsividade.</span>
+        </div>
+      </div>
+      <div class="jp-item">
+        <div class="jp-item-icon">🤖</div>
+        <div class="jp-item-text">
+          <strong>Robô com Sinais & Inteligência Artificial</strong>
+          <span>Recebe sinais em tempo real para Aviator, BacBo e Slots — tecnologia ao serviço do teu lucro.</span>
+        </div>
+      </div>
+      <div class="jp-item">
+        <div class="jp-item-icon">👥</div>
+        <div class="jp-item-text">
+          <strong>Comunidade Privada de Jogadores</strong>
+          <span>Conecta-te com outros membros, partilha resultados e cresce com quem joga a sério.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jp-divider"></div>
+
+  <div class="jp-section">
+    <div class="jp-section-title">Sistema de Afiliação</div>
+    <div class="jp-section-sub">Ganha dinheiro mesmo sem jogar</div>
+    <div class="jp-affiliate">
+      <h3>Indica um Amigo, Recebe</h3>
+      <p>Por cada amigo que trouxeres e que se juntar à mentoria, recebes imediatamente na tua carteira:</p>
+      <div class="jp-affiliate-value">5.000 Kzs</div>
+      <div class="jp-affiliate-label">Por cada indicação paga</div>
+      <p style="margin-top: 1rem; font-size: 12px; color: #555;">Sem limite de indicações. Quanto mais trouxeres, mais ganhas.</p>
+    </div>
+  </div>
+
+  <div class="jp-divider"></div>
+
+  <div class="jp-section">
+    <div class="jp-section-title">Resultados Reais</div>
+    <div class="jp-section-sub">Prints reais da nossa comunidade no Telegram — membros a lucrar todos os dias</div>
+
+    <div class="jp-results-grid">
+
+      <div class="jp-result-card">
+        <img class="jp-result-img" src="https://id-preview--5f803feb-000c-4a13-88eb-b16887ae7493.lovable.app/__l5e/assets-v1/9e7c6289-0203-4611-8deb-57a37a61df3e/christopher.jpeg" alt="Resultado Christopher" />
+        <div class="jp-result-caption">
+          <div class="jp-result-name">Christopher Xttt</div>
+          <div class="jp-result-amount">Kz 21.633</div>
+          <div class="jp-result-desc">De 5mil para 21mil — Slots</div>
+        </div>
+      </div>
+
+      <div class="jp-result-card">
+        <img class="jp-result-img" src="https://id-preview--5f803feb-000c-4a13-88eb-b16887ae7493.lovable.app/__l5e/assets-v1/f938a836-d42a-43ff-959b-bf45fa344275/total-27k.jpeg" alt="Resultado 27mil" />
+        <div class="jp-result-caption">
+          <div class="jp-result-name">Membro da Comunidade</div>
+          <div class="jp-result-amount">Kz 27.008</div>
+          <div class="jp-result-desc">Total de ganhos com 3mil</div>
+        </div>
+      </div>
+
+      <div class="jp-result-card">
+        <img class="jp-result-img" src="https://id-preview--5f803feb-000c-4a13-88eb-b16887ae7493.lovable.app/__l5e/assets-v1/a4d627a2-dcf4-4ae6-a8e4-8c5de42039d4/miguel.jpeg" alt="Resultado Miguel Carvalho" />
+        <div class="jp-result-caption">
+          <div class="jp-result-name">Miguel Carvalho</div>
+          <div class="jp-result-amount">Kz 196.000</div>
+          <div class="jp-result-desc">Grande ganho em Slots</div>
+        </div>
+      </div>
+
+      <div class="jp-result-card">
+        <img class="jp-result-img" src="https://id-preview--5f803feb-000c-4a13-88eb-b16887ae7493.lovable.app/__l5e/assets-v1/9e83df0b-1cf7-4f84-b5e5-86dfa82bd323/georg.jpeg" alt="Resultado Georg" />
+        <div class="jp-result-caption">
+          <div class="jp-result-name">Georg</div>
+          <div class="jp-result-amount">Kz 9.206</div>
+          <div class="jp-result-desc">Cumbo do almoço garantido</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="jp-community-banner">
+      <div class="jp-community-icon">📲</div>
+      <div class="jp-community-text">
+        <strong>Comunidade activa com 500+ membros</strong>
+        <span>Resultados partilhados todos os dias no grupo privado do Telegram da Mentoria Jackpot.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="jp-divider"></div>
+
+  <div class="jp-section">
+    <div class="jp-section-title">O Mentor em Acção</div>
+    <div class="jp-section-sub">Delcio Dollar a jogar em tempo real</div>
+    <div style="background:#0a0800;border:1px solid rgba(180,130,20,0.3);border-radius:8px;overflow:hidden;max-width:400px;margin:0 auto;">
+      <video class="jp-mentor-video" src="https://id-preview--5f803feb-000c-4a13-88eb-b16887ae7493.lovable.app/__l5e/assets-v1/a21fbc90-2bb0-4c25-b53d-8ba26bac3014/delcio-jogando.mp4" controls playsinline preload="metadata" style="width:100%;display:block;aspect-ratio:9/16;object-fit:cover;background:#000;"></video>
+    </div>
+  </div>
+
+  <div class="jp-divider"></div>
+
+  <!-- PASSO A PASSO -->
+  <div class="jp-section">
+    <div class="jp-section-title">Como Entrar na Mentoria</div>
+    <div class="jp-section-sub">Segue estes 2 passos simples e começa hoje mesmo</div>
+
+    <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+      <div style="background:linear-gradient(135deg,#0d0b00,#1a1400);border:1px solid rgba(180,130,20,0.35);border-radius:8px;padding:1.4rem 1.25rem 1.4rem 1rem;display:flex;gap:1rem;align-items:flex-start;">
+        <div style="background:linear-gradient(135deg,#C9A84C,#F0D080);color:#000;font-family:'Cinzel',serif;font-weight:900;font-size:1.3rem;min-width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+        <div>
+          <div style="color:#F0D080;font-size:1.1rem;font-weight:700;margin-bottom:8px;">Cadastra-te na Plataforma</div>
+          <div style="color:#bbb;font-size:1rem;line-height:1.7;margin-bottom:14px;">Regista-te gratuitamente na BantuBet através do link exclusivo abaixo para teres acesso à plataforma oficial.</div>
+          <a href="https://bantubet.co.ao/affiliates/?btag=2405167" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:linear-gradient(135deg,#C9A84C,#F0D080);color:#000;font-family:'Cinzel',serif;font-weight:700;font-size:0.9rem;letter-spacing:1px;text-transform:uppercase;padding:0.85rem 1.5rem;border-radius:6px;text-decoration:none;">
+            👉 Cadastrar Agora
+          </a>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#0d0b00,#1a1400);border:1px solid rgba(180,130,20,0.35);border-radius:8px;padding:1.4rem 1.25rem 1.4rem 1rem;display:flex;gap:1rem;align-items:flex-start;">
+        <div style="background:linear-gradient(135deg,#C9A84C,#F0D080);color:#000;font-family:'Cinzel',serif;font-weight:900;font-size:1.3rem;min-width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+        <div>
+          <div style="color:#F0D080;font-size:1.1rem;font-weight:700;margin-bottom:8px;">Ocupa a Tua Vaga</div>
+          <div style="color:#bbb;font-size:1rem;line-height:1.7;margin-bottom:14px;">Após o registo, fala connosco pelo WhatsApp para garantires o teu lugar na Mentoria Jackpot antes de as vagas esgotarem.</div>
+          <a href="https://wa.me/244958932770?text=Quero%20ocupar%20a%20minha%20vaga%20na%20Mentoria%20Jackpot" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#25D366;color:#fff;font-family:'Cinzel',serif;font-weight:700;font-size:0.9rem;letter-spacing:1px;text-transform:uppercase;padding:0.85rem 1.5rem;border-radius:6px;text-decoration:none;">
+            💬 Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="jp-divider"></div>
+
+  <div class="jp-price-section">
+    <div class="jp-ornament">— ✦ —</div>
+    <div class="jp-price-label">Investe no teu sucesso hoje</div>
+    <div style="color:#888;font-size:1.3rem;text-decoration:line-through;font-family:'Cinzel',serif;margin-bottom:4px;">30.000 Kwanzas</div>
+    <span class="jp-price-currency">Apenas</span>
+    <div class="jp-price-value">20.000</div>
+    <div style="color:#C9A84C;font-family:'Cinzel',serif;font-size:1.5rem;margin-top:4px;">Kwanzas</div>
+    <div style="display:inline-block;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.5);color:#F0D080;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:20px;margin:14px 0 20px;">🔥 Promoção apenas este mês</div>
+    <div class="jp-price-note">Acesso completo a todo o conteúdo · Suporte incluído</div>
+    <a class="jp-cta-btn" href="https://wa.me/244958932770?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20como%20aderir%20%C3%A0%20Mentoria%20Jackpot" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-block;">
+      🏆 Quero Entrar Agora
+    </a>
+    <div class="jp-cta-sub">Vagas limitadas · Entrada imediata após pagamento</div>
+    <div class="jp-guarantee">
+      <span>🔒</span>
+      <span>Pagamento seguro · Acesso instantâneo</span>
+    </div>
+    <div class="jp-ornament" style="margin-top: 2rem;">— ✦ —</div>
+  </div>
+
+  <div class="jp-footer">
+    <div class="gold">MENTORIA JACKPOT</div>
+    <div style="margin-top: 4px;">com Delcio Dollar</div>
+    <div style="margin-top: 8px; color: #333;">© 2026 · Todos os direitos reservados</div>
+    <div style="margin-top: 8px; color: #2a2a2a; font-size: 11px;">Joga com responsabilidade. Os resultados podem variar. O jogo deve ser encarado como entretenimento.</div>
+  </div>
+
+</div>
